@@ -19,12 +19,11 @@ const ValidateUser = (req,res,next)=>{
 }
 
 app.post('/',ValidateUser,(req,res)=>{
-    const {email,password} = req.body;
     
     const newUser = {
         id: users[users.length-1].id+1,
-        email,
-        password
+        email:req.body.email,
+        password:req.body.password
     }
     users.push(newUser)
     res.status(201).json(newUser)
@@ -56,6 +55,8 @@ app.put('/events/:id',(req,res)=>{
     event.Date = req.body.Date,
     event.Description = req.body.Description
 })
+
+
 
 app.listen(5000,()=>{
     console.log('Server is running on 5000')
