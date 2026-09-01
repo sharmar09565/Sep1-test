@@ -74,5 +74,5 @@ app.post('/add',(req,res)=>{
 
 
 app.listen(5000,()=>{
-    console.log(`Server is running on ${PORT}`)
+    console.log(`Server is running on 5000`)
 })
