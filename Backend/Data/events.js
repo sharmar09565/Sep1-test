@@ -40,3 +40,5 @@ const events = [
         Description: 'ghfgdffbg  ghgndgdfhgb ghgrhfgdhfnfdghgf'
     }
 ]
+
+export default events

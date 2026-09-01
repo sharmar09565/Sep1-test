@@ -31,7 +31,6 @@ const Home = () => {
         const timer = setTimeout(() => {
             setDebounce(search);
         }, 500);
-
         return () => {
             clearTimeout(timer);
         };
@@ -39,7 +38,6 @@ const Home = () => {
     }, [search]);
 
     useEffect(() => {
-
         const fuse = new Fuse(events, {
             keys: ["name"],
             threshold: 0.4
@@ -50,7 +48,6 @@ const Home = () => {
         } 
         else {
             const searchEvents = fuse.search(debounce);
-
             setEvents(
                 searchEvents.map(ev => ev.item)
             );
@@ -64,7 +61,7 @@ const Home = () => {
             <input type="text" onChange={(e) => setSearch(e.target.value)} />
             {
                 events.map(ev => (
-                    <Link to={`/event/:${ev.id}`} key={ev.id}>
+                    <Link to={`/event/${ev.id}`} key={ev.id}>
                         <h3>{ev.EventName}</h3>
                         <p> <b>Category:</b> {ev.Category}</p>
                         <p> <b>Location:</b> {ev.Location}</p>

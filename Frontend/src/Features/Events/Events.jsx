@@ -9,7 +9,7 @@ const Events = () => {
 
   const fetchEvent = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/event/${id}`)
+      const response = await axios.get(`http://localhost:5000/events/${id}`)
 
       setEvent(response.data)
     } catch (error) {
@@ -23,11 +23,14 @@ const Events = () => {
 
   return (
     <div>
-      <h2> {event.EventName} </h2>
-      <p> <b>Category:</b> {event.Category}</p>
-      <p> <b>Location:</b> {event.Location}</p>
-      <p> <b>Date:</b> {event.Date}</p>
-      <p> <b>Description:</b> {event.Description}</p>
+      {event ? (<>
+        <h2> {event.EventName} </h2>
+        <p> <b>Category:</b> {event.Category}</p>
+        <p> <b>Location:</b> {event.Location}</p>
+        <p> <b>Date:</b> {event.Date}</p>
+        <p> <b>Description:</b> {event.Description}</p>
+      </>
+      ) : <h2>Loading...</h2>}
     </div>
   )
 }

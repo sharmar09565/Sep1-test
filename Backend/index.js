@@ -1,7 +1,7 @@
 import express from 'express'
 import cors from 'cors'
-import users from './Data/users'
-import events from './Data/events'
+import users from './Data/users.js'
+import events from './Data/events.js'
 
 const app = express()
 
@@ -11,7 +11,7 @@ app.use(cors())
 const ValidateUser = (req,res,next)=>{
     const {email,password} = req.body
     if(!email || !password){
-        req.status(400).json({
+        return res.status(400).json({
             message:"Fill all details"
         })
     }
@@ -35,17 +35,16 @@ app.get('/events',(req,res)=>{
 
 app.get('/events/:id',(req,res)=>{
     const id = Number(req.params.id)
-    const event = events.find((event)=>{
-        event.id===id
-    })
+    const event = events.find((event) => event.id === id)
+    if(!event){
+        return res.status(404).json({message:"Event not found"})
+    }
     res.status(200).json(event)
 })
 
 app.put('/events/:id',(req,res)=>{
     const id = Number(req.params.id)
-    let event = events.find((event)=>{
-        event.id===id
-    })
+    let event = events.find((event) => event.id === id)
     if(!event){
         return res.status(404).json({message:"User not found"})
     }
@@ -54,6 +53,7 @@ app.put('/events/:id',(req,res)=>{
     event.Location = req.body.Location,
     event.Date = req.body.Date,
     event.Description = req.body.Description
+    res.status(200).json(event)
 })
 
 app.post('/add',(req,res)=>{
@@ -65,11 +65,14 @@ app.post('/add',(req,res)=>{
         Date,
         Description
     }
+    newEvent.id = events[length-1].id+1
     events.push(newEvent)
-    res.status(201).json(newUser)
+    res.status(201).json(newEvent)
 })
 
 
+
+
 app.listen(5000,()=>{
-    console.log('Server is running on 5000')
+    console.log(`Server is running on ${PORT}`)
 })

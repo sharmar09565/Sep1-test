@@ -4,10 +4,12 @@ import Home from "./Features/Home/Home"
 import Events from "./Features/Events/Events"
 import Edit from "./Features/EditEvent/Edit"
 import Add from "./Features/AddEvent/Add"
+import Navbar from "../Shared/Navbar"
 
 const App = () => {
   return (
     <BrowserRouter>
+    <Navbar/>
       <Routes>
         <Route path='/' element={<Login/>}/>
         <Route path='/home' element={<Home/>}/>
