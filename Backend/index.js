@@ -18,7 +18,7 @@ const ValidateUser = (req,res,next)=>{
     next()
 }
 
-app.post('/',ValidateUser,(req,res)=>{
+app.post('/login',ValidateUser,(req,res)=>{
     
     const newUser = {
         id: users[users.length-1].id+1,

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState } from 'react';
 import {useNavigate} from 'react-router-dom'
-import Home from '../Home/Home'; 
+
 
 
 const Login = () => {
@@ -14,7 +14,7 @@ const Login = () => {
     const handleSubmit = async(e)=>{
         e.preventDefault();
         try{
-            const response = await axios.post('http://localhost:5000/login',{
+            const response = await axios.post('http://localhost:5000/',{
                 email,
                 password
             })
