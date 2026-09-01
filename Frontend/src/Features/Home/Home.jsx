@@ -65,7 +65,7 @@ const Home = () => {
             {
                 events.map(ev => (
                     <Link to={`/event/:${ev.id}`} key={ev.id}>
-                        <h1>{ev.EventName}</h1>
+                        <h3>{ev.EventName}</h3>
                         <p> <b>Category:</b> {ev.Category}</p>
                         <p> <b>Location:</b> {ev.Location}</p>
                         <p> <b>Date:</b> {ev.Date}</p>

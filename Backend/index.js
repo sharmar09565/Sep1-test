@@ -56,6 +56,18 @@ app.put('/events/:id',(req,res)=>{
     event.Description = req.body.Description
 })
 
+app.post('/add',(req,res)=>{
+    const {EventName,Category,Location,Date,Description} = req.body
+    const newEvent = {
+        EventName,
+        Category,
+        Location,
+        Date,
+        Description
+    }
+    events.push(newEvent)
+    res.status(201).json(newUser)
+})
 
 
 app.listen(5000,()=>{

@@ -18,9 +18,7 @@ const Login = () => {
                 email,
                 password
             })
-            if(!response.ok){
-                throw new Error("Can't get data")
-            }
+            
             navigate('/home')
 
         } catch(error){
