@@ -65,7 +65,7 @@ app.post('/add',(req,res)=>{
         Date,
         Description
     }
-    newEvent.id = events[length-1].id+1
+    newEvent.id = events[events.length-1].id+1
     events.push(newEvent)
     res.status(201).json(newEvent)
 })
